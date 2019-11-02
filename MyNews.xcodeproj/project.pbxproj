@@ -16,9 +16,11 @@
 		ECD062D0236D5DA6004FC043 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ECD062CE236D5DA6004FC043 /* LaunchScreen.storyboard */; };
 		ECD062D8236D6226004FC043 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD062D7236D6226004FC043 /* CustomTableViewCell.swift */; };
 		ECD062DA236D6291004FC043 /* EmailedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD062D9236D6291004FC043 /* EmailedTableViewController.swift */; };
-		ECD062DC236D6EC4004FC043 /* DetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD062DB236D6EC4004FC043 /* DetailsTableViewController.swift */; };
 		ECD062DE236D7A93004FC043 /* NetworkingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD062DD236D7A93004FC043 /* NetworkingManager.swift */; };
 		ECD062E0236D7AEC004FC043 /* EmailedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD062DF236D7AEC004FC043 /* EmailedModel.swift */; };
+		ECD062E4236D9172004FC043 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD062E3236D9172004FC043 /* DetailViewController.swift */; };
+		ECE4F4D4236D9C07001FF3CB /* NewsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECE4F4D3236D9C07001FF3CB /* NewsData.swift */; };
+		ECE4F4DA236DCDF0001FF3CB /* FvoriteTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECE4F4D9236DCDF0001FF3CB /* FvoriteTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,9 +37,11 @@
 		ECD062D1236D5DA6004FC043 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ECD062D7236D6226004FC043 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		ECD062D9236D6291004FC043 /* EmailedTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailedTableViewController.swift; sourceTree = "<group>"; };
-		ECD062DB236D6EC4004FC043 /* DetailsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsTableViewController.swift; sourceTree = "<group>"; };
 		ECD062DD236D7A93004FC043 /* NetworkingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingManager.swift; sourceTree = "<group>"; };
 		ECD062DF236D7AEC004FC043 /* EmailedModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailedModel.swift; sourceTree = "<group>"; };
+		ECD062E3236D9172004FC043 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		ECE4F4D3236D9C07001FF3CB /* NewsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsData.swift; sourceTree = "<group>"; };
+		ECE4F4D9236DCDF0001FF3CB /* FvoriteTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FvoriteTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,9 +95,11 @@
 			isa = PBXGroup;
 			children = (
 				ECD062C0236D5DA0004FC043 /* AppDelegate.swift */,
+				ECE4F4D3236D9C07001FF3CB /* NewsData.swift */,
 				ECD062C2236D5DA0004FC043 /* SceneDelegate.swift */,
 				ECD062D7236D6226004FC043 /* CustomTableViewCell.swift */,
-				ECD062DB236D6EC4004FC043 /* DetailsTableViewController.swift */,
+				ECD062E3236D9172004FC043 /* DetailViewController.swift */,
+				ECE4F4D8236DCD9D001FF3CB /* Favorite news */,
 				ECD062E1236D7B57004FC043 /* Most Emailed */,
 				ECD062E2236D7B86004FC043 /* Services and Protocols */,
 				ECD062C6236D5DA0004FC043 /* Main.storyboard */,
@@ -120,6 +126,14 @@
 				ECD062DD236D7A93004FC043 /* NetworkingManager.swift */,
 			);
 			path = "Services and Protocols";
+			sourceTree = "<group>";
+		};
+		ECE4F4D8236DCD9D001FF3CB /* Favorite news */ = {
+			isa = PBXGroup;
+			children = (
+				ECE4F4D9236DCDF0001FF3CB /* FvoriteTableViewController.swift */,
+			);
+			path = "Favorite news";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -237,14 +251,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ECD062E4236D9172004FC043 /* DetailViewController.swift in Sources */,
 				ECD062D8236D6226004FC043 /* CustomTableViewCell.swift in Sources */,
 				ECD062C1236D5DA0004FC043 /* AppDelegate.swift in Sources */,
 				ECD062CB236D5DA0004FC043 /* MyNews.xcdatamodeld in Sources */,
 				ECD062DA236D6291004FC043 /* EmailedTableViewController.swift in Sources */,
-				ECD062DC236D6EC4004FC043 /* DetailsTableViewController.swift in Sources */,
+				ECE4F4DA236DCDF0001FF3CB /* FvoriteTableViewController.swift in Sources */,
 				ECD062C3236D5DA0004FC043 /* SceneDelegate.swift in Sources */,
 				ECD062DE236D7A93004FC043 /* NetworkingManager.swift in Sources */,
 				ECD062E0236D7AEC004FC043 /* EmailedModel.swift in Sources */,
+				ECE4F4D4236D9C07001FF3CB /* NewsData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -392,6 +408,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = T52V8YC858;
 				INFOPLIST_FILE = MyNews/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -411,6 +428,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = T52V8YC858;
 				INFOPLIST_FILE = MyNews/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
