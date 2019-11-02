@@ -17,12 +17,6 @@ enum NewsCategory {
 
 class NetworkingManagerService {
 
-//    enum NewsCategory {
-//        case shared
-//        case viewed
-//        case mailed
-//    }
-
     func fetchData(category: NewsCategory ,complitionHandler: @escaping (_ news: NewsData?) -> Void) {
         let urlString: String?
         switch category {

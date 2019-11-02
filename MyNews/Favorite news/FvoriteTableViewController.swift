@@ -10,7 +10,6 @@ import UIKit
 
 class FavoriteTableViewController: UITableViewController {
     
-    var networkingManager = NetworkingManagerService()
     var newsData: NewsData?
 
     override func viewDidLoad() {
@@ -36,11 +35,11 @@ class FavoriteTableViewController: UITableViewController {
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let detailVC = segue.destination as! DetailViewController
-        guard let indexPath = tableView.indexPathForSelectedRow else { return }
-        if segue.identifier == "mailed" {
-            detailVC.startUrl = newsData?.results[indexPath.row].url
-        }
+//        let detailVC = segue.destination as! DetailViewController
+//        guard let indexPath = tableView.indexPathForSelectedRow else { return }
+//        if segue.identifier == "???" {
+//            detailVC.startUrl = newsData?.results[indexPath.row].url
+//        }
     }
 
 

@@ -12,8 +12,8 @@ class EmailedTableViewController: UITableViewController {
 
     @IBOutlet weak var segmentController: UISegmentedControl!
     
-    var networkingManager = NetworkingManagerService()
-    var newsData: NewsData?
+    private var networkingManager = NetworkingManagerService()
+    private var newsData: NewsData?
     private let myRefreshControl = UIRefreshControl()
 
     override func viewDidLoad() {
