@@ -12,6 +12,7 @@ protocol NetworkingManager {
 
     func checkConnection() -> Bool
     func fetchData(
-        category: NewsCategory, complitionHandler: @escaping (_ news: NewsData?) -> Void)
+    category: NewsCategory,
+    completionHandler: @escaping (_ news: NewsData?, _ error: Error?) -> Void)
 
 }

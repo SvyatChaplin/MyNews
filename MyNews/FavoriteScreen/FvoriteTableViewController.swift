@@ -10,33 +10,29 @@ import UIKit
 
 class FavoriteTableViewController: UITableViewController {
 
-    var storageManagerService = StorageManagerService()
-    
-    var newsData: [SavedNewsData]?
+    var favoriteModel: FavoriteModel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        newsData = storageManagerService.getData()
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
+        super.viewWillAppear(animated)
         tableView.reloadData()
     }
 
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return storageManagerService.getData()?.count ?? 0
+        return favoriteModel.getNews()?.count ?? 0
     }
 
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CustomTableViewCell
-
         cell.backView.layer.cornerRadius = 10
-        cell.titleLabel.text = storageManagerService.getData()?[indexPath.row].title
-        cell.newsDetailsLabel.text = storageManagerService.getData()?[indexPath.row].abstract
+        cell.titleLabel.text = favoriteModel.getNews()?[indexPath.row].title
+        cell.newsDetailsLabel.text = favoriteModel.getNews()?[indexPath.row].abstract
         return cell
     }
 
@@ -44,7 +40,7 @@ class FavoriteTableViewController: UITableViewController {
                             commit editingStyle: UITableViewCell.EditingStyle,
                             forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            storageManagerService.removeObject(at: indexPath.row)
+            favoriteModel.removeElement(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .automatic)
         }
     }
@@ -53,9 +49,7 @@ class FavoriteTableViewController: UITableViewController {
         guard let detailVC = segue.destination as? DetailViewController,
             let indexPath = tableView.indexPathForSelectedRow else { return }
         if segue.identifier == "saved" {
-            detailVC.startUrl = storageManagerService.getData()?[indexPath.row].url
-            print(indexPath.row)
-            detailVC.objectIndex = indexPath.row
+            detailVC.startUrl = favoriteModel.getNews()?[indexPath.row].url
         }
     }
 
