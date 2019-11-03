@@ -9,19 +9,25 @@
 import UIKit
 
 class FavoriteTableViewController: UITableViewController {
+
+    var storageManagerService = StorageManagerService()
     
-    var newsData: NewsData?
+    var newsData: [SavedNewsData]?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        newsData = storageManagerService.getData()
+    }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        tableView.reloadData()
     }
 
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 5
+        return storageManagerService.getData()?.count ?? 0
     }
 
 
@@ -29,17 +35,19 @@ class FavoriteTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CustomTableViewCell
 
         cell.backView.layer.cornerRadius = 10
-        cell.titleLabel.text = "Title"
-        cell.newsDetailsLabel.text = "Details"
+        cell.titleLabel.text = storageManagerService.getData()?[indexPath.row].title
+        cell.newsDetailsLabel.text = storageManagerService.getData()?[indexPath.row].abstract
         return cell
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        let detailVC = segue.destination as! DetailViewController
-//        guard let indexPath = tableView.indexPathForSelectedRow else { return }
-//        if segue.identifier == "???" {
-//            detailVC.startUrl = newsData?.results[indexPath.row].url
-//        }
+        guard let detailVC = segue.destination as? DetailViewController,
+            let indexPath = tableView.indexPathForSelectedRow else { return }
+        if segue.identifier == "saved" {
+            detailVC.startUrl = storageManagerService.getData()?[indexPath.row].url
+            print(indexPath.row)
+            detailVC.objectIndex = indexPath.row
+        }
     }
 
 

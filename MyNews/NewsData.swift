@@ -9,10 +9,10 @@
 import Foundation
 
 struct NewsData: Decodable {
-    struct Results: Decodable {
-        let url: String
-        let title: String
-        let abstract: String
-    }
     let results: [Results]
+}
+struct Results: Decodable {
+    let url: String
+    let title: String
+    let abstract: String
 }

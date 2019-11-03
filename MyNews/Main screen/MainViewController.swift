@@ -1,5 +1,5 @@
 //
-//  EmailedTableViewController.swift
+//  MainViewController.swift
 //  MyNews
 //
 //  Created by Svyat Chaplin on 02.11.2019.
@@ -8,33 +8,64 @@
 
 import UIKit
 
-class EmailedTableViewController: UITableViewController {
+class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var segmentController: UISegmentedControl!
     
     private var networkingManager = NetworkingManagerService()
     private var newsData: NewsData?
     private let myRefreshControl = UIRefreshControl()
 
+//    var mainModel: MainModel!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         myRefreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
         myRefreshControl.addTarget(self, action: #selector(refresh(_:)), for: .valueChanged)
         tableView.addSubview(myRefreshControl)
+//        askForData()
         fetchData()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+//        askForData()
         fetchData()
     }
 
+    // MARK: - Methods to refresh data
+
+//    private func askForData() {
+//            switch segmentController.selectedSegmentIndex {
+//            case 0:
+//                mainModel.newsCategory = .mailed
+//            case 1:
+//                mainModel.newsCategory = .viewed
+//            case 2:
+//                mainModel.newsCategory = .shared
+//            default:
+//                return
+//            }
+//            mainModel.requestData { [weak self] in
+//                if self?.mainModel.askForAlert == true {
+//                    self?.alert()
+//                }
+//                DispatchQueue.main.async {
+//                    self?.tableView.reloadData()
+//                    self?.myRefreshControl.endRefreshing()
+//                }
+//            }
+//    }
+
     @objc func refresh(_ sender: Any) {
+//        askForData()
         fetchData()
     }
 
     private func fetchData() {
-        let category: NewsCategory?
+
+        var category: NewsCategory = .mailed
 
         switch segmentController.selectedSegmentIndex {
         case 0:
@@ -44,10 +75,11 @@ class EmailedTableViewController: UITableViewController {
         case 2:
             category = .shared
         default:
-            category = nil
+            return
         }
-
-        networkingManager.fetchData(category: category!) { [weak self] (data) in
+        
+        if networkingManager.checkConnection() {
+        networkingManager.fetchData(category: category) { [weak self] (data) in
             if data == nil {
                 self?.alert()
             }
@@ -57,31 +89,43 @@ class EmailedTableViewController: UITableViewController {
                 self?.myRefreshControl.endRefreshing()
             }
         }
+        } else {
+            self.alert()
+        }
     }
 
     // MARK: - Table view data source
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return newsData?.results.count ?? 0
+//        return mainModel.countOfNews ?? 0
     }
 
 
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CustomTableViewCell
 
         cell.backView.layer.cornerRadius = 10
+//        cell.titleLabel.text = mainModel.newsData?.results[indexPath.row].title
+//        cell.newsDetailsLabel.text = mainModel.newsData?.results[indexPath.row].abstract
         cell.titleLabel.text = newsData?.results[indexPath.row].title
         cell.newsDetailsLabel.text = newsData?.results[indexPath.row].abstract
         return cell
     }
 
+    // MARK: - Navigation, IBActions and alerts
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let detailVC = segue.destination as! DetailViewController
-        guard let indexPath = tableView.indexPathForSelectedRow else { return }
-        detailVC.startUrl = newsData?.results[indexPath.row].url
+        guard let detailVC = segue.destination as? DetailViewController,
+            let indexPath = tableView.indexPathForSelectedRow else { return }
+        if segue.identifier == "load" {
+            detailVC.newsData = newsData?.results[indexPath.row]
+            detailVC.objectIndex = indexPath.row
+        }
     }
+
     @IBAction func segmentControlAction(_ sender: UISegmentedControl) {
+//        askForData()
         fetchData()
     }
     

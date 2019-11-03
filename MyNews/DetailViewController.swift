@@ -11,16 +11,42 @@ import WebKit
 
 class DetailViewController: UIViewController {
 
+    private var storageManager = StorageManagerService()
+
+    @IBOutlet weak var favoriteButton: UIButton!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var webView: WKWebView!
 
     var startUrl: String?
+    var newsData: Results?
+    var objectIndex: Int?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        guard let urlString = startUrl,
-        let url = URL(string: urlString) else { return }
-        webView.load(URLRequest(url: url))
+        favoriteButton.layer.cornerRadius = 25
+        if newsData == nil {
+            guard let urlString = startUrl,
+                let url = URL(string: urlString) else { return }
+            var urlRequest = URLRequest(url: url)
+            urlRequest.cachePolicy = .returnCacheDataElseLoad
+            webView.load(urlRequest)
+        } else {
+            guard let urlString = newsData?.url,
+                let url = URL(string: urlString) else { return }
+            var urlRequest = URLRequest(url: url)
+            urlRequest.cachePolicy = .returnCacheDataElseLoad
+            webView.load(urlRequest)
+        }
     }
 
+    @IBAction func addOrRemoveButton(_ sender: UIButton) {
+        storageManager.saveNewsData(newsData!)
+    }
+    @IBAction func removeButton(_ sender: UIButton) {
+        if objectIndex != nil {
+        storageManager.removeObject(at: objectIndex!)
+        } else {
+            return
+        }
+    }
 }
