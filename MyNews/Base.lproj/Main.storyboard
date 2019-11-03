@@ -105,7 +105,7 @@
                                 </constraints>
                                 <state key="normal" title="Favorite"/>
                                 <connections>
-                                    <action selector="addOrRemoveButton:" destination="t0k-0A-5qy" eventType="touchUpInside" id="5SQ-ZY-uko"/>
+                                    <action selector="addToFavoriteButton:" destination="t0k-0A-5qy" eventType="touchUpInside" id="5SQ-ZY-uko"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -130,7 +130,7 @@
         <!--Main View Controller-->
         <scene sceneID="09g-1v-xhY">
             <objects>
-                <viewController id="9uo-Vg-0qG" customClass="MainViewController" customModule="MyNews" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MainScreenVC" id="9uo-Vg-0qG" customClass="MainViewController" customModule="MyNews" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="YFr-iR-vlH">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -234,7 +234,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="O7S-Ld-Xv7">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="tCP-oV-kDU" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TabBarController" automaticallyAdjustsScrollViewInsets="NO" id="tCP-oV-kDU" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="TEC-qN-chz">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
@@ -252,6 +252,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="fq9-EZ-6lB"/>
+        <segue reference="Ndv-MV-4ng"/>
     </inferredMetricsTieBreakers>
 </document>

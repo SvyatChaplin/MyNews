@@ -12,61 +12,46 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var segmentController: UISegmentedControl!
-    
-    private var networkingManager = NetworkingManagerService()
-    private var storageManager = StorageManagerService()
+
     private var newsData: NewsData?
     private let myRefreshControl = UIRefreshControl()
 
+    var mainModel: MainModel!
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        myRefreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
-        myRefreshControl.addTarget(self, action: #selector(refresh(_:)), for: .valueChanged)
-        tableView.addSubview(myRefreshControl)
-        fetchData()
+        setupBindings()
+        setupRefreshControl()
+        mainModel.fetchData(segmentController.selectedSegmentIndex)
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        fetchData()
+        mainModel.fetchData(segmentController.selectedSegmentIndex)
     }
 
     // MARK: - Methods to refresh data
 
-    @objc private func refresh(_ sender: Any) {
-        fetchData()
+    private func setupRefreshControl() {
+        myRefreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        myRefreshControl.addTarget(self, action: #selector(refresh(_:)), for: .valueChanged)
+        tableView.addSubview(myRefreshControl)
     }
 
-    private func fetchData() {
+    @objc private func refresh(_ sender: Any) {
+        mainModel.fetchData(segmentController.selectedSegmentIndex)
+    }
 
-        var category: NewsCategory = .mailed
-
-        switch segmentController.selectedSegmentIndex {
-        case 0:
-            category = .mailed
-        case 1:
-            category = .viewed
-        case 2:
-            category = .shared
-        default:
-            return
+    private func setupBindings() {
+        mainModel.didReceiveAnError = { [weak self] error in
+            self?.alert(error)
         }
-        
-        if networkingManager.checkConnection() {
-            networkingManager.fetchData(category: category) { [weak self] (data, error) in
-                guard let self = self else { return }
-                if data == nil {
-                    self.alert(error)
-                    return
-                }
-                self.newsData = data
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
-                    self.myRefreshControl.endRefreshing()
-                }
+        mainModel.didUpdateData = { [weak self] newsData in
+            self?.newsData = newsData
+            DispatchQueue.main.async {
+                self?.tableView.reloadData()
+                self?.myRefreshControl.endRefreshing()
             }
-        } else {
-            self.alert(nil)
         }
     }
 
@@ -91,12 +76,13 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         guard let detailVC = segue.destination as? DetailViewController,
             let indexPath = tableView.indexPathForSelectedRow else { return }
         if segue.identifier == "load" {
+            detailVC.detailModel = mainModel.detailModel(for: (newsData?.results[indexPath.row])!)
             detailVC.newsData = newsData?.results[indexPath.row]
         }
     }
 
     @IBAction func segmentControlAction(_ sender: UISegmentedControl) {
-        fetchData()
+        mainModel.fetchData(segmentController.selectedSegmentIndex)
     }
     
     private func alert(_ error: Error?) {

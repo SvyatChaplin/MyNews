@@ -23,6 +23,8 @@
 		ECE4F4E1236EC845001FF3CB /* NetworkingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECE4F4E0236EC845001FF3CB /* NetworkingManager.swift */; };
 		ECE4F4E3236EE555001FF3CB /* StorageManagerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECE4F4E2236EE555001FF3CB /* StorageManagerService.swift */; };
 		ECE4F4E5236F106A001FF3CB /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECE4F4E4236F106A001FF3CB /* StorageManager.swift */; };
+		ECE4F4E8236F647A001FF3CB /* FavoriteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECE4F4E7236F647A001FF3CB /* FavoriteModel.swift */; };
+		ECE4F4EA236F66ED001FF3CB /* DetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECE4F4E9236F66ED001FF3CB /* DetailModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +48,8 @@
 		ECE4F4E0236EC845001FF3CB /* NetworkingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingManager.swift; sourceTree = "<group>"; };
 		ECE4F4E2236EE555001FF3CB /* StorageManagerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManagerService.swift; sourceTree = "<group>"; };
 		ECE4F4E4236F106A001FF3CB /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
+		ECE4F4E7236F647A001FF3CB /* FavoriteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteModel.swift; sourceTree = "<group>"; };
+		ECE4F4E9236F66ED001FF3CB /* DetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +141,7 @@
 		ECE4F4D8236DCD9D001FF3CB /* FavoriteScreen */ = {
 			isa = PBXGroup;
 			children = (
+				ECE4F4E7236F647A001FF3CB /* FavoriteModel.swift */,
 				ECE4F4D9236DCDF0001FF3CB /* FvoriteTableViewController.swift */,
 			);
 			path = FavoriteScreen;
@@ -146,6 +151,7 @@
 			isa = PBXGroup;
 			children = (
 				ECD062E3236D9172004FC043 /* DetailViewController.swift */,
+				ECE4F4E9236F66ED001FF3CB /* DetailModel.swift */,
 			);
 			path = DetailScreen;
 			sourceTree = "<group>";
@@ -267,6 +273,7 @@
 			files = (
 				ECD062E4236D9172004FC043 /* DetailViewController.swift in Sources */,
 				ECD062D8236D6226004FC043 /* CustomTableViewCell.swift in Sources */,
+				ECE4F4EA236F66ED001FF3CB /* DetailModel.swift in Sources */,
 				ECD062C1236D5DA0004FC043 /* AppDelegate.swift in Sources */,
 				ECD062CB236D5DA0004FC043 /* MyNews.xcdatamodeld in Sources */,
 				ECD062DA236D6291004FC043 /* MainViewController.swift in Sources */,
@@ -275,6 +282,7 @@
 				ECD062DE236D7A93004FC043 /* NetworkingManagerService.swift in Sources */,
 				ECE4F4DF236EC7F6001FF3CB /* MainModel.swift in Sources */,
 				ECE4F4D4236D9C07001FF3CB /* NewsData.swift in Sources */,
+				ECE4F4E8236F647A001FF3CB /* FavoriteModel.swift in Sources */,
 				ECE4F4E3236EE555001FF3CB /* StorageManagerService.swift in Sources */,
 				ECE4F4E5236F106A001FF3CB /* StorageManager.swift in Sources */,
 			);

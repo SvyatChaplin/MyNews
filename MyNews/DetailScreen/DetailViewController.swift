@@ -11,16 +11,20 @@ import WebKit
 
 class DetailViewController: UIViewController {
 
-    private var storageManager = StorageManagerService()
-
     @IBOutlet weak var favoriteButton: UIButton!
     @IBOutlet weak var webView: WKWebView!
 
     var startUrl: String?
     var newsData: Results?
 
+    var detailModel: DetailModel!
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupBindings()
+    }
+
+    private func setupBindings() {
         favoriteButton.layer.cornerRadius = 10
         if newsData == nil {
             favoriteButton.isEnabled = false
@@ -38,9 +42,9 @@ class DetailViewController: UIViewController {
         }
     }
 
-    @IBAction func addOrRemoveButton(_ sender: UIButton) {
+    @IBAction func addToFavoriteButton(_ sender: UIButton) {
         guard let data = newsData else { return }
         favoriteButton.isEnabled = false
-        storageManager.saveNewsData(data)
+        detailModel.saveNewsData(data)
     }
 }

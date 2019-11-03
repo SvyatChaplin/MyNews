@@ -13,12 +13,5 @@ class CustomTableViewCell: UITableViewCell {
     @IBOutlet weak var backView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var newsDetailsLabel: UILabel!
-
-    func setupCell(_ cell: CustomTableViewCell, _ newsData: NewsData?, _ indexPath: IndexPath) -> UITableViewCell {
-        cell.backView.layer.cornerRadius = 10
-        cell.titleLabel.text = newsData?.results[indexPath.row].title
-        cell.newsDetailsLabel.text = newsData?.results[indexPath.row].abstract
-        return cell
-    }
     
 }
