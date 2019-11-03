@@ -24,7 +24,7 @@ class NetworkingManagerService: NetworkingManager {
     }
 
     func fetchData(
-        category: NewsCategory, complitionHandler: @escaping (_ news: NewsData?) -> Void) {
+        category: NewsCategory, complitionHandler: @escaping (_ news: NewsData?, _ error: Error?) -> Void) {
 
         let urlString: String?
         switch category {
@@ -43,13 +43,14 @@ class NetworkingManagerService: NetworkingManager {
                     guard let data = response.data else { return }
                     do {
                         let myResponse = try JSONDecoder().decode(NewsData.self, from: data)
-                        complitionHandler(myResponse)
+                        complitionHandler(myResponse, nil)
                     } catch {
                         print(error.localizedDescription)
+                        complitionHandler(nil, error)
                     }
                 } else {
                     print(response.error?.localizedDescription ?? "Something wrong")
-                    complitionHandler(nil)
+                    complitionHandler(nil, response.error)
                 }
             }
         }

@@ -104,10 +104,10 @@
 				ECE4F4D3236D9C07001FF3CB /* NewsData.swift */,
 				ECD062C2236D5DA0004FC043 /* SceneDelegate.swift */,
 				ECD062D7236D6226004FC043 /* CustomTableViewCell.swift */,
-				ECD062E3236D9172004FC043 /* DetailViewController.swift */,
-				ECE4F4D8236DCD9D001FF3CB /* Favorite news */,
-				ECD062E1236D7B57004FC043 /* Main screen */,
-				ECD062E2236D7B86004FC043 /* Services and Protocols */,
+				ECE4F4E6236F35D1001FF3CB /* DetailScreen */,
+				ECE4F4D8236DCD9D001FF3CB /* FavoriteScreen */,
+				ECD062E1236D7B57004FC043 /* MainScreen */,
+				ECD062E2236D7B86004FC043 /* Services */,
 				ECD062C6236D5DA0004FC043 /* Main.storyboard */,
 				ECD062CC236D5DA6004FC043 /* Assets.xcassets */,
 				ECD062CE236D5DA6004FC043 /* LaunchScreen.storyboard */,
@@ -117,16 +117,16 @@
 			path = MyNews;
 			sourceTree = "<group>";
 		};
-		ECD062E1236D7B57004FC043 /* Main screen */ = {
+		ECD062E1236D7B57004FC043 /* MainScreen */ = {
 			isa = PBXGroup;
 			children = (
 				ECE4F4DE236EC7F6001FF3CB /* MainModel.swift */,
 				ECD062D9236D6291004FC043 /* MainViewController.swift */,
 			);
-			path = "Main screen";
+			path = MainScreen;
 			sourceTree = "<group>";
 		};
-		ECD062E2236D7B86004FC043 /* Services and Protocols */ = {
+		ECD062E2236D7B86004FC043 /* Services */ = {
 			isa = PBXGroup;
 			children = (
 				ECD062DD236D7A93004FC043 /* NetworkingManagerService.swift */,
@@ -134,15 +134,23 @@
 				ECE4F4E2236EE555001FF3CB /* StorageManagerService.swift */,
 				ECE4F4E4236F106A001FF3CB /* StorageManager.swift */,
 			);
-			path = "Services and Protocols";
+			path = Services;
 			sourceTree = "<group>";
 		};
-		ECE4F4D8236DCD9D001FF3CB /* Favorite news */ = {
+		ECE4F4D8236DCD9D001FF3CB /* FavoriteScreen */ = {
 			isa = PBXGroup;
 			children = (
 				ECE4F4D9236DCDF0001FF3CB /* FvoriteTableViewController.swift */,
 			);
-			path = "Favorite news";
+			path = FavoriteScreen;
+			sourceTree = "<group>";
+		};
+		ECE4F4E6236F35D1001FF3CB /* DetailScreen */ = {
+			isa = PBXGroup;
+			children = (
+				ECD062E3236D9172004FC043 /* DetailViewController.swift */,
+			);
+			path = DetailScreen;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

@@ -11,6 +11,7 @@ import Foundation
 struct NewsData: Decodable {
     let results: [Results]
 }
+
 struct Results: Decodable {
     let url: String
     let title: String

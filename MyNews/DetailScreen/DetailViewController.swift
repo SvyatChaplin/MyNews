@@ -14,17 +14,16 @@ class DetailViewController: UIViewController {
     private var storageManager = StorageManagerService()
 
     @IBOutlet weak var favoriteButton: UIButton!
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var webView: WKWebView!
 
     var startUrl: String?
     var newsData: Results?
-    var objectIndex: Int?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        favoriteButton.layer.cornerRadius = 25
+        favoriteButton.layer.cornerRadius = 10
         if newsData == nil {
+            favoriteButton.isEnabled = false
             guard let urlString = startUrl,
                 let url = URL(string: urlString) else { return }
             var urlRequest = URLRequest(url: url)
@@ -41,6 +40,7 @@ class DetailViewController: UIViewController {
 
     @IBAction func addOrRemoveButton(_ sender: UIButton) {
         guard let data = newsData else { return }
+        favoriteButton.isEnabled = false
         storageManager.saveNewsData(data)
     }
 }

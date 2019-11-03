@@ -55,7 +55,6 @@ class FavoriteTableViewController: UITableViewController {
         if segue.identifier == "saved" {
             detailVC.startUrl = storageManagerService.getData()?[indexPath.row].url
             print(indexPath.row)
-            detailVC.objectIndex = indexPath.row
         }
     }
 

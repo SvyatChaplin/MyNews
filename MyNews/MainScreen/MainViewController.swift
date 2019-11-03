@@ -53,18 +53,19 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
         
         if networkingManager.checkConnection() {
-        networkingManager.fetchData(category: category) { [weak self] (data) in
+        networkingManager.fetchData(category: category) { [weak self] (data, error) in
+            guard let self = self else { return }
             if data == nil {
-                self?.alert()
+                self.alert(error)
             }
-            self?.newsData = data
+            self.newsData = data
             DispatchQueue.main.async {
-                self?.tableView.reloadData()
-                self?.myRefreshControl.endRefreshing()
+                self.tableView.reloadData()
+                self.myRefreshControl.endRefreshing()
             }
         }
         } else {
-            self.alert()
+            self.alert(nil)
         }
     }
 
@@ -91,7 +92,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             let indexPath = tableView.indexPathForSelectedRow else { return }
         if segue.identifier == "load" {
             detailVC.newsData = newsData?.results[indexPath.row]
-            detailVC.objectIndex = indexPath.row
         }
     }
 
@@ -99,9 +99,9 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         fetchData()
     }
     
-    private func alert() {
+    private func alert(_ error: Error?) {
         let alert = UIAlertController(title: "Connection error",
-                                      message: "You can use Favorite News offline",
+                                      message: error?.localizedDescription ?? "No internet connection. You can use Favorite screen offline",
                                       preferredStyle: .alert)
         let okAction = UIAlertAction(title: "Ok", style: .default) { _ in
             self.myRefreshControl.endRefreshing()
