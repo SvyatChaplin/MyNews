@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		08B0CD26C1E73BB64428F9A1 /* Pods_MyNews.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E867DAD060456B51007666B /* Pods_MyNews.framework */; };
 		ECD062C1236D5DA0004FC043 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD062C0236D5DA0004FC043 /* AppDelegate.swift */; };
-		ECD062C3236D5DA0004FC043 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD062C2236D5DA0004FC043 /* SceneDelegate.swift */; };
 		ECD062C8236D5DA0004FC043 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ECD062C6236D5DA0004FC043 /* Main.storyboard */; };
 		ECD062CB236D5DA0004FC043 /* MyNews.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = ECD062C9236D5DA0004FC043 /* MyNews.xcdatamodeld */; };
 		ECD062CD236D5DA6004FC043 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ECD062CC236D5DA6004FC043 /* Assets.xcassets */; };
@@ -32,7 +31,6 @@
 		E253CC645D01BBE66F5D5947 /* Pods-MyNews.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyNews.debug.xcconfig"; path = "Target Support Files/Pods-MyNews/Pods-MyNews.debug.xcconfig"; sourceTree = "<group>"; };
 		ECD062BD236D5DA0004FC043 /* MyNews.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyNews.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECD062C0236D5DA0004FC043 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		ECD062C2236D5DA0004FC043 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		ECD062C7236D5DA0004FC043 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		ECD062CA236D5DA0004FC043 /* MyNews.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MyNews.xcdatamodel; sourceTree = "<group>"; };
 		ECD062CC236D5DA6004FC043 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -102,7 +100,6 @@
 			children = (
 				ECD062C0236D5DA0004FC043 /* AppDelegate.swift */,
 				ECE4F4D3236D9C07001FF3CB /* NewsData.swift */,
-				ECD062C2236D5DA0004FC043 /* SceneDelegate.swift */,
 				ECD062D7236D6226004FC043 /* CustomTableViewCell.swift */,
 				ECE4F4E6236F35D1001FF3CB /* DetailScreen */,
 				ECE4F4D8236DCD9D001FF3CB /* FavoriteScreen */,
@@ -274,7 +271,6 @@
 				ECD062CB236D5DA0004FC043 /* MyNews.xcdatamodeld in Sources */,
 				ECD062DA236D6291004FC043 /* MainViewController.swift in Sources */,
 				ECE4F4DA236DCDF0001FF3CB /* FvoriteTableViewController.swift in Sources */,
-				ECD062C3236D5DA0004FC043 /* SceneDelegate.swift in Sources */,
 				ECE4F4E1236EC845001FF3CB /* NetworkingManager.swift in Sources */,
 				ECD062DE236D7A93004FC043 /* NetworkingManagerService.swift in Sources */,
 				ECE4F4DF236EC7F6001FF3CB /* MainModel.swift in Sources */,

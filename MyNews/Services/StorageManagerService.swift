@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-class StorageManagerService {
+class StorageManagerService: StorageManager {
 
     // MARK: - Core Data stack
 

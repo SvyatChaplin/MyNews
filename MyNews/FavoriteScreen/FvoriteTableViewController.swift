@@ -10,9 +10,8 @@ import UIKit
 
 class FavoriteTableViewController: UITableViewController {
 
-    var storageManagerService = StorageManagerService()
-    
-    var newsData: [SavedNewsData]?
+    private var storageManagerService = StorageManagerService()
+    private var newsData: [SavedNewsData]?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,23 +19,24 @@ class FavoriteTableViewController: UITableViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
+        super.viewWillAppear(animated)
+        newsData = storageManagerService.getData()
         tableView.reloadData()
     }
 
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return storageManagerService.getData()?.count ?? 0
+        return newsData?.count ?? 0
     }
 
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CustomTableViewCell
-
+        
         cell.backView.layer.cornerRadius = 10
-        cell.titleLabel.text = storageManagerService.getData()?[indexPath.row].title
-        cell.newsDetailsLabel.text = storageManagerService.getData()?[indexPath.row].abstract
+        cell.titleLabel.text = newsData?[indexPath.row].title
+        cell.newsDetailsLabel.text = newsData?[indexPath.row].abstract
         return cell
     }
 
@@ -53,8 +53,7 @@ class FavoriteTableViewController: UITableViewController {
         guard let detailVC = segue.destination as? DetailViewController,
             let indexPath = tableView.indexPathForSelectedRow else { return }
         if segue.identifier == "saved" {
-            detailVC.startUrl = storageManagerService.getData()?[indexPath.row].url
-            print(indexPath.row)
+            detailVC.startUrl = newsData?[indexPath.row].url
         }
     }
 

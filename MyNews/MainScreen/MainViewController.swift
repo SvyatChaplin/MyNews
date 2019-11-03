@@ -27,13 +27,13 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
+        super.viewWillAppear(animated)
         fetchData()
     }
 
     // MARK: - Methods to refresh data
 
-    @objc func refresh(_ sender: Any) {
+    @objc private func refresh(_ sender: Any) {
         fetchData()
     }
 
@@ -53,17 +53,18 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
         
         if networkingManager.checkConnection() {
-        networkingManager.fetchData(category: category) { [weak self] (data, error) in
-            guard let self = self else { return }
-            if data == nil {
-                self.alert(error)
+            networkingManager.fetchData(category: category) { [weak self] (data, error) in
+                guard let self = self else { return }
+                if data == nil {
+                    self.alert(error)
+                    return
+                }
+                self.newsData = data
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                    self.myRefreshControl.endRefreshing()
+                }
             }
-            self.newsData = data
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-                self.myRefreshControl.endRefreshing()
-            }
-        }
         } else {
             self.alert(nil)
         }
@@ -78,7 +79,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CustomTableViewCell
-
         cell.backView.layer.cornerRadius = 10
         cell.titleLabel.text = newsData?.results[indexPath.row].title
         cell.newsDetailsLabel.text = newsData?.results[indexPath.row].abstract

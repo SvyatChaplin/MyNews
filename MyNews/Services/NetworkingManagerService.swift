@@ -16,16 +16,16 @@ enum NewsCategory {
 }
 
 class NetworkingManagerService: NetworkingManager {
-
+    
     func checkConnection() -> Bool {
         let connectionStatus = NetworkReachabilityManager(
             host: "https://www.google.com/")?.isReachable
         return connectionStatus!
     }
-
+    
     func fetchData(
-        category: NewsCategory, complitionHandler: @escaping (_ news: NewsData?, _ error: Error?) -> Void) {
-
+        category: NewsCategory, completionHandler: @escaping (_ news: NewsData?, _ error: Error?) -> Void) {
+        
         let urlString: String?
         switch category {
         case .mailed:
@@ -35,25 +35,26 @@ class NetworkingManagerService: NetworkingManager {
         case .viewed:
             urlString = "https://api.nytimes.com/svc/mostpopular/v2/viewed/30.json?api-key=p2tkAeA6jop4Fn9JwtABNyrxGf2MrWgI"
         }
+        
         guard let safeURL = urlString,
-        let url = URL(string: safeURL) else { return }
+            let url = URL(string: safeURL) else { return }
         AF.request(url, method: .get).responseJSON { (response) in
             DispatchQueue.main.async {
                 if response.data != nil {
                     guard let data = response.data else { return }
                     do {
                         let myResponse = try JSONDecoder().decode(NewsData.self, from: data)
-                        complitionHandler(myResponse, nil)
+                        completionHandler(myResponse, nil)
                     } catch {
                         print(error.localizedDescription)
-                        complitionHandler(nil, error)
+                        completionHandler(nil, error)
                     }
                 } else {
                     print(response.error?.localizedDescription ?? "Something wrong")
-                    complitionHandler(nil, response.error)
+                    completionHandler(nil, response.error)
                 }
             }
         }
     }
-
+    
 }
