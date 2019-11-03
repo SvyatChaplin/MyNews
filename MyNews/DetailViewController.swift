@@ -40,13 +40,7 @@ class DetailViewController: UIViewController {
     }
 
     @IBAction func addOrRemoveButton(_ sender: UIButton) {
-        storageManager.saveNewsData(newsData!)
-    }
-    @IBAction func removeButton(_ sender: UIButton) {
-        if objectIndex != nil {
-        storageManager.removeObject(at: objectIndex!)
-        } else {
-            return
-        }
+        guard let data = newsData else { return }
+        storageManager.saveNewsData(data)
     }
 }

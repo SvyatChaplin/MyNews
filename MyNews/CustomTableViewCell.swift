@@ -11,7 +11,6 @@ import UIKit
 class CustomTableViewCell: UITableViewCell {
 
     @IBOutlet weak var backView: UIView!
-    @IBOutlet weak var newsImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var newsDetailsLabel: UILabel!
     

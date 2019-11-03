@@ -23,6 +23,7 @@
 		ECE4F4DF236EC7F6001FF3CB /* MainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECE4F4DE236EC7F6001FF3CB /* MainModel.swift */; };
 		ECE4F4E1236EC845001FF3CB /* NetworkingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECE4F4E0236EC845001FF3CB /* NetworkingManager.swift */; };
 		ECE4F4E3236EE555001FF3CB /* StorageManagerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECE4F4E2236EE555001FF3CB /* StorageManagerService.swift */; };
+		ECE4F4E5236F106A001FF3CB /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECE4F4E4236F106A001FF3CB /* StorageManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		ECE4F4DE236EC7F6001FF3CB /* MainModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainModel.swift; sourceTree = "<group>"; };
 		ECE4F4E0236EC845001FF3CB /* NetworkingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingManager.swift; sourceTree = "<group>"; };
 		ECE4F4E2236EE555001FF3CB /* StorageManagerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManagerService.swift; sourceTree = "<group>"; };
+		ECE4F4E4236F106A001FF3CB /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +132,7 @@
 				ECD062DD236D7A93004FC043 /* NetworkingManagerService.swift */,
 				ECE4F4E0236EC845001FF3CB /* NetworkingManager.swift */,
 				ECE4F4E2236EE555001FF3CB /* StorageManagerService.swift */,
+				ECE4F4E4236F106A001FF3CB /* StorageManager.swift */,
 			);
 			path = "Services and Protocols";
 			sourceTree = "<group>";
@@ -269,6 +272,7 @@
 				ECE4F4DF236EC7F6001FF3CB /* MainModel.swift in Sources */,
 				ECE4F4D4236D9C07001FF3CB /* NewsData.swift in Sources */,
 				ECE4F4E3236EE555001FF3CB /* StorageManagerService.swift in Sources */,
+				ECE4F4E5236F106A001FF3CB /* StorageManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

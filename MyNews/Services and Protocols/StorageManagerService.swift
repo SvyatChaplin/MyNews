@@ -41,13 +41,11 @@ class StorageManagerService {
     }
 
     func removeObject(at index: Int) {
-        print(index)
         let appDelegate = AppDelegate()
         let context = appDelegate.persistentContainer.viewContext
         let fetchRequest: NSFetchRequest<SavedNewsData> = SavedNewsData.fetchRequest()
-        let results = try? context.fetch(fetchRequest)
-        let resultsData = results as! [NSManagedObject]
-        context.delete(resultsData[index])
+        guard let results = try? context.fetch(fetchRequest) else { return }
+        context.delete(results[index])
         do {
             try context.save()
         } catch {

@@ -40,6 +40,15 @@ class FavoriteTableViewController: UITableViewController {
         return cell
     }
 
+    override func tableView(_ tableView: UITableView,
+                            commit editingStyle: UITableViewCell.EditingStyle,
+                            forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            storageManagerService.removeObject(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+        }
+    }
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let detailVC = segue.destination as? DetailViewController,
             let indexPath = tableView.indexPathForSelectedRow else { return }

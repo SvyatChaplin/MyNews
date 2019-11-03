@@ -14,52 +14,26 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var segmentController: UISegmentedControl!
     
     private var networkingManager = NetworkingManagerService()
+    private var storageManager = StorageManagerService()
     private var newsData: NewsData?
     private let myRefreshControl = UIRefreshControl()
-
-//    var mainModel: MainModel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         myRefreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
         myRefreshControl.addTarget(self, action: #selector(refresh(_:)), for: .valueChanged)
         tableView.addSubview(myRefreshControl)
-//        askForData()
         fetchData()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-//        askForData()
         fetchData()
     }
 
     // MARK: - Methods to refresh data
 
-//    private func askForData() {
-//            switch segmentController.selectedSegmentIndex {
-//            case 0:
-//                mainModel.newsCategory = .mailed
-//            case 1:
-//                mainModel.newsCategory = .viewed
-//            case 2:
-//                mainModel.newsCategory = .shared
-//            default:
-//                return
-//            }
-//            mainModel.requestData { [weak self] in
-//                if self?.mainModel.askForAlert == true {
-//                    self?.alert()
-//                }
-//                DispatchQueue.main.async {
-//                    self?.tableView.reloadData()
-//                    self?.myRefreshControl.endRefreshing()
-//                }
-//            }
-//    }
-
     @objc func refresh(_ sender: Any) {
-//        askForData()
         fetchData()
     }
 
@@ -98,7 +72,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return newsData?.results.count ?? 0
-//        return mainModel.countOfNews ?? 0
     }
 
 
@@ -106,8 +79,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CustomTableViewCell
 
         cell.backView.layer.cornerRadius = 10
-//        cell.titleLabel.text = mainModel.newsData?.results[indexPath.row].title
-//        cell.newsDetailsLabel.text = mainModel.newsData?.results[indexPath.row].abstract
         cell.titleLabel.text = newsData?.results[indexPath.row].title
         cell.newsDetailsLabel.text = newsData?.results[indexPath.row].abstract
         return cell
@@ -125,7 +96,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
 
     @IBAction func segmentControlAction(_ sender: UISegmentedControl) {
-//        askForData()
         fetchData()
     }
     
