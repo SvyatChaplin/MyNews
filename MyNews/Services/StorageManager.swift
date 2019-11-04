@@ -11,7 +11,7 @@ import Foundation
 protocol StorageManager {
     
     func saveNewsData(_ data: Results)
-    func getData() -> [SavedNewsData]?
+    func getData() -> [PresentableData]?
     func removeObject(at index: Int)
     
 }

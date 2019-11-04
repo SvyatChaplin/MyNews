@@ -98,7 +98,7 @@
                                 </wkWebViewConfiguration>
                             </wkWebView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Keq-pi-NFs">
-                                <rect key="frame" x="314" y="10" width="80" height="30"/>
+                                <rect key="frame" x="289" y="10" width="80" height="30"/>
                                 <color key="backgroundColor" red="0.96470588239999999" green="0.97647058819999999" blue="0.97647058819999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="gzn-P0-EYa"/>
@@ -113,7 +113,7 @@
                         <constraints>
                             <constraint firstItem="Keq-pi-NFs" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="DmP-Zp-HLT" secondAttribute="leading" symbolic="YES" id="I6o-9j-dmz"/>
                             <constraint firstItem="Keq-pi-NFs" firstAttribute="top" secondItem="DmP-Zp-HLT" secondAttribute="top" constant="10" id="WLH-ZK-1cq"/>
-                            <constraint firstItem="DmP-Zp-HLT" firstAttribute="trailing" secondItem="Keq-pi-NFs" secondAttribute="trailing" constant="20" id="dfm-YU-Ln5"/>
+                            <constraint firstItem="DmP-Zp-HLT" firstAttribute="trailing" secondItem="Keq-pi-NFs" secondAttribute="trailing" constant="45" id="dfm-YU-Ln5"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="DmP-Zp-HLT"/>
                     </view>

@@ -10,9 +10,9 @@ import Foundation
 import CoreData
 
 class StorageManagerService: StorageManager {
-
+    
     // MARK: - Core Data stack
-
+    
     lazy var persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "MyNews")
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
@@ -22,9 +22,9 @@ class StorageManagerService: StorageManager {
         })
         return container
     }()
-
+    
     // MARK: - Core Data Saving support
-
+    
     func saveContext () {
         let context = persistentContainer.viewContext
         if context.hasChanges {
@@ -36,9 +36,9 @@ class StorageManagerService: StorageManager {
             }
         }
     }
-
+    
     // MARK: - Methods to manage data
-
+    
     func saveNewsData(_ data: Results) {
         let context = persistentContainer.viewContext
         guard let entity = NSEntityDescription.entity(forEntityName: "SavedNewsData", in: context) else { return }
@@ -46,26 +46,26 @@ class StorageManagerService: StorageManager {
         managedObject.abstract = data.abstract
         managedObject.title = data.title
         managedObject.url = data.url
-
+        
         do {
             try context.save()
         } catch {
             print(error.localizedDescription)
         }
     }
-
-    func getData() -> [SavedNewsData]? {
+    
+    func getData() -> [PresentableData]? {
         let context = persistentContainer.viewContext
         let fetchRequest: NSFetchRequest<SavedNewsData> = SavedNewsData.fetchRequest()
         do {
             let results = try context.fetch(fetchRequest)
-            return results
+            return results.map(PresentableData.init)
         } catch {
             print(error.localizedDescription)
             return nil
         }
     }
-
+    
     func removeObject(at index: Int) {
         let context = persistentContainer.viewContext
         let fetchRequest: NSFetchRequest<SavedNewsData> = SavedNewsData.fetchRequest()
@@ -77,5 +77,5 @@ class StorageManagerService: StorageManager {
             print(error.localizedDescription)
         }
     }
-
+    
 }
