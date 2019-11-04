@@ -16,11 +16,12 @@ class FavoriteModel {
         self.storageManager = storageManager
     }
 
-    func getNews() -> [SavedNewsData]? {
+    func getNews() -> [PresentableData]? {
         return storageManager.getData()
     }
 
     func removeElement(at index: Int) {
         storageManager.removeObject(at: index)
     }
+
 }

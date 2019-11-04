@@ -9,15 +9,15 @@
 import Foundation
 
 class DetailModel {
-
+    
     private var storageManager: StorageManager
-
+    
     init(storageManager: StorageManager) {
         self.storageManager = storageManager
     }
-
+    
     func saveNewsData(_ data: Results) {
         storageManager.saveNewsData(data)
     }
-
+    
 }

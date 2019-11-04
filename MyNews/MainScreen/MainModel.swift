@@ -9,18 +9,18 @@
 import Foundation
 
 class MainModel {
-
+    
     var didReceiveAnError: ((Error?) -> Void)?
-    var didUpdateData: ((NewsData?) -> Void)?
-
+    var didUpdateData: (([PresentableData]?) -> Void)?
+    
     private var storageManager: StorageManager
     private let networkingManager: NetworkingManager
-
+    
     init(storageManager: StorageManager, networkingManager: NetworkingManager) {
         self.storageManager = storageManager
         self.networkingManager = networkingManager
     }
-
+    
     func fetchData(_ segmentIndex: Int) {
         var category: NewsCategory = .mailed
         switch segmentIndex {
@@ -47,9 +47,9 @@ class MainModel {
             self.didReceiveAnError?(nil)
         }
     }
-
-    func detailModel(for data: Results) -> DetailModel {
+    
+    func detailModel(for data: [PresentableData]) -> DetailModel {
         return DetailModel(storageManager: storageManager)
     }
-
+    
 }

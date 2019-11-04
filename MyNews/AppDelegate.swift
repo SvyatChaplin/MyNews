@@ -11,14 +11,14 @@ import CoreData
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
-
+    
+    
     var window: UIWindow?
-
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-
+        
         self.window = UIWindow(frame: UIScreen.main.bounds)
-
+        
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         guard let mainScreenViewController = storyboard.instantiateViewController(identifier: "MainScreenVC") as? MainViewController,
             let favoriteViewController = storyboard.instantiateViewController(identifier: "FavoriteScreenVC") as? FavoriteTableViewController,
@@ -31,13 +31,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         mainScreenViewController.mainModel = mainModel
         let favoriteModel = FavoriteModel(storageManager: storageManager)
         favoriteViewController.favoriteModel = favoriteModel
-
+        
         tabBarController.viewControllers = [mainScreenViewController, favoriteViewController]
         self.window?.rootViewController = tabBarController
         self.window?.makeKeyAndVisible()
         
         return true
     }
-
+    
 }
 

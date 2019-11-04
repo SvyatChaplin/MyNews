@@ -25,6 +25,7 @@
 		ECE4F4E5236F106A001FF3CB /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECE4F4E4236F106A001FF3CB /* StorageManager.swift */; };
 		ECE4F4E8236F647A001FF3CB /* FavoriteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECE4F4E7236F647A001FF3CB /* FavoriteModel.swift */; };
 		ECE4F4EA236F66ED001FF3CB /* DetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECE4F4E9236F66ED001FF3CB /* DetailModel.swift */; };
+		ECE4F4EE23700679001FF3CB /* PresentableData.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECE4F4ED23700679001FF3CB /* PresentableData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,7 @@
 		ECE4F4E4236F106A001FF3CB /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		ECE4F4E7236F647A001FF3CB /* FavoriteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteModel.swift; sourceTree = "<group>"; };
 		ECE4F4E9236F66ED001FF3CB /* DetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailModel.swift; sourceTree = "<group>"; };
+		ECE4F4ED23700679001FF3CB /* PresentableData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentableData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +107,7 @@
 				ECD062C0236D5DA0004FC043 /* AppDelegate.swift */,
 				ECE4F4D3236D9C07001FF3CB /* NewsData.swift */,
 				ECD062D7236D6226004FC043 /* CustomTableViewCell.swift */,
+				ECE4F4ED23700679001FF3CB /* PresentableData.swift */,
 				ECE4F4E6236F35D1001FF3CB /* DetailScreen */,
 				ECE4F4D8236DCD9D001FF3CB /* FavoriteScreen */,
 				ECD062E1236D7B57004FC043 /* MainScreen */,
@@ -278,6 +281,7 @@
 				ECD062CB236D5DA0004FC043 /* MyNews.xcdatamodeld in Sources */,
 				ECD062DA236D6291004FC043 /* MainViewController.swift in Sources */,
 				ECE4F4DA236DCDF0001FF3CB /* FvoriteTableViewController.swift in Sources */,
+				ECE4F4EE23700679001FF3CB /* PresentableData.swift in Sources */,
 				ECE4F4E1236EC845001FF3CB /* NetworkingManager.swift in Sources */,
 				ECD062DE236D7A93004FC043 /* NetworkingManagerService.swift in Sources */,
 				ECE4F4DF236EC7F6001FF3CB /* MainModel.swift in Sources */,

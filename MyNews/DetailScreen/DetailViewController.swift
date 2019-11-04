@@ -15,7 +15,7 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var webView: WKWebView!
 
     var startUrl: String?
-    var newsData: Results?
+    var newsData: PresentableData?
 
     var detailModel: DetailModel!
 
@@ -43,8 +43,18 @@ class DetailViewController: UIViewController {
     }
 
     @IBAction func addToFavoriteButton(_ sender: UIButton) {
-        guard let data = newsData else { return }
+        guard let data = newsData.map(Results.init) else { return }
         favoriteButton.isEnabled = false
         detailModel.saveNewsData(data)
     }
+}
+
+extension Results {
+
+    init(presentableData: PresentableData) {
+        self.abstract = presentableData.abstract
+        self.title = presentableData.title
+        self.url = presentableData.url
+    }
+
 }

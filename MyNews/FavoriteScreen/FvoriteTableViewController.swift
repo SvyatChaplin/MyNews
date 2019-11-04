@@ -44,7 +44,7 @@ class FavoriteTableViewController: UITableViewController {
             tableView.deleteRows(at: [indexPath], with: .automatic)
         }
     }
-
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let detailVC = segue.destination as? DetailViewController,
             let indexPath = tableView.indexPathForSelectedRow else { return }
@@ -52,6 +52,5 @@ class FavoriteTableViewController: UITableViewController {
             detailVC.startUrl = favoriteModel.getNews()?[indexPath.row].url
         }
     }
-
 
 }
