@@ -13,6 +13,7 @@ class DetailViewController: UIViewController {
 
     @IBOutlet weak var favoriteButton: UIButton!
     @IBOutlet weak var webView: WKWebView!
+    @IBOutlet weak var backButton: UIButton!
 
     var startUrl: String?
     var newsData: PresentableData?
@@ -26,6 +27,7 @@ class DetailViewController: UIViewController {
 
     private func setupBindings() {
         favoriteButton.layer.cornerRadius = 10
+        backButton.layer.cornerRadius = 10
         if newsData == nil {
             favoriteButton.isEnabled = false
             guard let urlString = startUrl,
@@ -42,6 +44,10 @@ class DetailViewController: UIViewController {
         }
     }
 
+    @IBAction func cancelAction(_ sender: UIButton) {
+        dismiss(animated: true, completion: nil)
+    }
+    
     @IBAction func addToFavoriteButton(_ sender: UIButton) {
         guard let data = newsData.map(Results.init) else { return }
         favoriteButton.isEnabled = false

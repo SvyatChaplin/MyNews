@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="tCP-oV-kDU">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -16,27 +17,27 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="Cell" id="m9T-PU-0LH" customClass="CustomTableViewCell" customModule="MyNews" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Cell" id="m9T-PU-0LH" customClass="CustomTableViewCell" customModule="MyNews" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="93"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="m9T-PU-0LH" id="AAD-Q2-1kq">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="93"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="382.5" height="93"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PWw-zP-2X7">
-                                            <rect key="frame" x="20" y="16" width="374" height="71"/>
+                                            <rect key="frame" x="20" y="16" width="354.5" height="71"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="e8L-jA-cQ3">
-                                                    <rect key="frame" x="8" y="5" width="358" height="46"/>
+                                                    <rect key="frame" x="8" y="5" width="338.5" height="46"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rgB-TV-hpx">
-                                                            <rect key="frame" x="0.0" y="0.0" width="358" height="20.5"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="338.5" height="20.5"/>
                                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HUv-hs-4TT">
-                                                            <rect key="frame" x="0.0" y="25.5" width="358" height="20.5"/>
+                                                            <rect key="frame" x="0.0" y="25.5" width="338.5" height="20.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -108,17 +109,32 @@
                                     <action selector="addToFavoriteButton:" destination="t0k-0A-5qy" eventType="touchUpInside" id="5SQ-ZY-uko"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XM4-Mk-DRH">
+                                <rect key="frame" x="45" y="10" width="80" height="30"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="jwW-AG-ltn"/>
+                                </constraints>
+                                <state key="normal" title="Back"/>
+                                <connections>
+                                    <action selector="cancelAction:" destination="t0k-0A-5qy" eventType="touchUpInside" id="OL1-vc-FK1"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="Keq-pi-NFs" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="XM4-Mk-DRH" secondAttribute="trailing" constant="8" symbolic="YES" id="GNG-vM-alw"/>
                             <constraint firstItem="Keq-pi-NFs" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="DmP-Zp-HLT" secondAttribute="leading" symbolic="YES" id="I6o-9j-dmz"/>
                             <constraint firstItem="Keq-pi-NFs" firstAttribute="top" secondItem="DmP-Zp-HLT" secondAttribute="top" constant="10" id="WLH-ZK-1cq"/>
+                            <constraint firstItem="XM4-Mk-DRH" firstAttribute="top" secondItem="DmP-Zp-HLT" secondAttribute="top" constant="10" id="Xwy-Ef-cuv"/>
                             <constraint firstItem="DmP-Zp-HLT" firstAttribute="trailing" secondItem="Keq-pi-NFs" secondAttribute="trailing" constant="45" id="dfm-YU-Ln5"/>
+                            <constraint firstItem="XM4-Mk-DRH" firstAttribute="leading" secondItem="DmP-Zp-HLT" secondAttribute="leading" constant="45" id="zqr-4T-YaC"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="DmP-Zp-HLT"/>
                     </view>
                     <navigationItem key="navigationItem" id="t7M-z2-KdT"/>
                     <connections>
+                        <outlet property="backButton" destination="XM4-Mk-DRH" id="OEf-6n-D62"/>
                         <outlet property="favoriteButton" destination="Keq-pi-NFs" id="4Qb-xX-ipP"/>
                         <outlet property="webView" destination="fHz-Ec-T6w" id="5lG-QO-H99"/>
                     </connections>
@@ -139,27 +155,27 @@
                                 <rect key="frame" x="0.0" y="75" width="414" height="738"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="Cell" id="pTK-Eu-0ow" customClass="CustomTableViewCell" customModule="MyNews" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Cell" id="pTK-Eu-0ow" customClass="CustomTableViewCell" customModule="MyNews" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="93"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="pTK-Eu-0ow" id="ada-d3-hye">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="93"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="382.5" height="93"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5yP-ym-J2E">
-                                                    <rect key="frame" x="20" y="16" width="374" height="71"/>
+                                                    <rect key="frame" x="20" y="16" width="354.5" height="71"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Brd-Tv-Say">
-                                                            <rect key="frame" x="8" y="5" width="358" height="46"/>
+                                                            <rect key="frame" x="8" y="5" width="338.5" height="46"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3bb-KZ-6QW">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="358" height="20.5"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="338.5" height="20.5"/>
                                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vPj-mK-MiJ">
-                                                                    <rect key="frame" x="0.0" y="25.5" width="358" height="20.5"/>
+                                                                    <rect key="frame" x="0.0" y="25.5" width="338.5" height="20.5"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
