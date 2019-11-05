@@ -30,9 +30,8 @@ class FavoriteTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CustomTableViewCell
-        cell.backView.layer.cornerRadius = 10
-        cell.titleLabel.text = favoriteModel.getNews()?[indexPath.row].title
-        cell.newsDetailsLabel.text = favoriteModel.getNews()?[indexPath.row].abstract
+        let presentapleData = favoriteModel.getNews()
+        cell.setupCell(presentableData: presentapleData, index: indexPath.row)
         return cell
     }
 

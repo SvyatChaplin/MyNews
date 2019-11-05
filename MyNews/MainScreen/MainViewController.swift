@@ -64,9 +64,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CustomTableViewCell
-        cell.backView.layer.cornerRadius = 10
-        cell.titleLabel.text = presentableData?[indexPath.row].title
-        cell.newsDetailsLabel.text = presentableData?[indexPath.row].abstract
+        cell.setupCell(presentableData: presentableData, index: indexPath.row)
         return cell
     }
     
