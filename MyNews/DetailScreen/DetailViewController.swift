@@ -41,7 +41,7 @@ class DetailViewController: UIViewController {
             webView.load(urlRequest)
         }
     }
-
+    
     @IBAction func addToFavoriteButton(_ sender: UIButton) {
         guard let data = newsData.map(Results.init) else { return }
         favoriteButton.isEnabled = false

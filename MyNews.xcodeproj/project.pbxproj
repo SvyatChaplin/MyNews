@@ -26,6 +26,7 @@
 		ECE4F4E8236F647A001FF3CB /* FavoriteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECE4F4E7236F647A001FF3CB /* FavoriteModel.swift */; };
 		ECE4F4EA236F66ED001FF3CB /* DetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECE4F4E9236F66ED001FF3CB /* DetailModel.swift */; };
 		ECE4F4EE23700679001FF3CB /* PresentableData.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECE4F4ED23700679001FF3CB /* PresentableData.swift */; };
+		ECE4F4F023701A52001FF3CB /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECE4F4EF23701A51001FF3CB /* WebKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +53,7 @@
 		ECE4F4E7236F647A001FF3CB /* FavoriteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteModel.swift; sourceTree = "<group>"; };
 		ECE4F4E9236F66ED001FF3CB /* DetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailModel.swift; sourceTree = "<group>"; };
 		ECE4F4ED23700679001FF3CB /* PresentableData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentableData.swift; sourceTree = "<group>"; };
+		ECE4F4EF23701A51001FF3CB /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ECE4F4F023701A52001FF3CB /* WebKit.framework in Frameworks */,
 				08B0CD26C1E73BB64428F9A1 /* Pods_MyNews.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -69,6 +72,7 @@
 		41B2603635BC88087A74E7E4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				ECE4F4EF23701A51001FF3CB /* WebKit.framework */,
 				7E867DAD060456B51007666B /* Pods_MyNews.framework */,
 			);
 			name = Frameworks;
@@ -105,7 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				ECD062C0236D5DA0004FC043 /* AppDelegate.swift */,
-				ECE4F4F12370230C001FF3CB /* Models */,
+				ECE4F4F223716E8B001FF3CB /* Models */,
 				ECE4F4E6236F35D1001FF3CB /* DetailScreen */,
 				ECE4F4D8236DCD9D001FF3CB /* FavoriteScreen */,
 				ECD062E1236D7B57004FC043 /* MainScreen */,
@@ -157,12 +161,12 @@
 			path = DetailScreen;
 			sourceTree = "<group>";
 		};
-		ECE4F4F12370230C001FF3CB /* Models */ = {
+		ECE4F4F223716E8B001FF3CB /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				ECE4F4D3236D9C07001FF3CB /* NewsData.swift */,
 				ECD062D7236D6226004FC043 /* CustomTableViewCell.swift */,
 				ECE4F4ED23700679001FF3CB /* PresentableData.swift */,
+				ECE4F4D3236D9C07001FF3CB /* NewsData.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -444,7 +448,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = T52V8YC858;
 				INFOPLIST_FILE = MyNews/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -464,7 +468,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = T52V8YC858;
 				INFOPLIST_FILE = MyNews/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
