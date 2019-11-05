@@ -14,10 +14,9 @@ class CustomTableViewCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var newsDetailsLabel: UILabel!
 
-    func setupCell(presentableData: [PresentableData]?, index: Int) {
+    func setupCell(newsInfo: PresentableData) {
         self.backView.layer.cornerRadius = 10
-        self.titleLabel.text = presentableData?[index].title
-        self.newsDetailsLabel.text = presentableData?[index].abstract
+        self.titleLabel.text = newsInfo.title
+        self.newsDetailsLabel.text = newsInfo.abstract
     }
-    
 }

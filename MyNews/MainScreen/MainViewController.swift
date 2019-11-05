@@ -64,7 +64,8 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CustomTableViewCell
-        cell.setupCell(presentableData: presentableData, index: indexPath.row)
+        guard let newsInfo = presentableData?[indexPath.row] else { return cell }
+        cell.setupCell(newsInfo: newsInfo)
         return cell
     }
     
