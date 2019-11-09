@@ -10,8 +10,8 @@ import Foundation
 
 protocol StorageManager {
     
-    func saveNewsData(_ data: Results)
-    func getData() -> [PresentableData]?
+    func saveNewsData(_ data: Articles)
+    func getData() -> [Articles]?
     func removeObject(at index: Int)
     
 }

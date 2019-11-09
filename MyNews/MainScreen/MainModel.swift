@@ -11,7 +11,7 @@ import Foundation
 class MainModel {
     
     var didReceiveAnError: ((Error?) -> Void)?
-    var didUpdateData: (([PresentableData]?) -> Void)?
+    var didUpdateGoogleData: ((GoogleNews?) -> Void)?
     
     private var storageManager: StorageManager
     private let networkingManager: NetworkingManager
@@ -20,35 +20,35 @@ class MainModel {
         self.storageManager = storageManager
         self.networkingManager = networkingManager
     }
-    
-    func fetchData(_ segmentIndex: Int) {
-        var category: NewsCategory = .mailed
+
+
+    func fetchGoogleNews(_ segmentIndex: Int) {
+        var category: Category = .none
         switch segmentIndex {
         case 0:
-            category = .mailed
+            category = .none
         case 1:
-            category = .viewed
+            category = .sports
         case 2:
-            category = .shared
+            category = .technology
         default:
-            return
+            category = .business
         }
         if networkingManager.checkConnection() {
-            networkingManager.fetchData(
-            category: category) { [weak self] (newsData, error) in
+            networkingManager.fetchGoogleNews(category: category) { [weak self] (googleNews, error) in
                 guard let self = self else { return }
-                if newsData == nil {
+                if googleNews == nil {
                     self.didReceiveAnError?(error)
                     return
                 }
-                self.didUpdateData?(newsData)
+                self.didUpdateGoogleData?(googleNews)
             }
         } else {
             self.didReceiveAnError?(nil)
         }
     }
-    
-    func detailModel(for data: [PresentableData]) -> DetailModel {
+
+    func detailModelForGoogle(for data: [Articles]) -> DetailModel {
         return DetailModel(storageManager: storageManager)
     }
     

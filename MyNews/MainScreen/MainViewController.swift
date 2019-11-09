@@ -12,8 +12,8 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var segmentController: UISegmentedControl!
-    
-    private var presentableData: [PresentableData]?
+
+    private var googleNews: [Articles]?
     private let myRefreshControl = UIRefreshControl()
     
     var mainModel: MainModel!
@@ -22,12 +22,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         super.viewDidLoad()
         setupBindings()
         setupRefreshControl()
-        mainModel.fetchData(segmentController.selectedSegmentIndex)
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        mainModel.fetchData(segmentController.selectedSegmentIndex)
+        mainModel.fetchGoogleNews(segmentController.selectedSegmentIndex)
     }
     
     // MARK: - Methods to refresh data
@@ -39,15 +34,15 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     @objc private func refresh(_ sender: Any) {
-        mainModel.fetchData(segmentController.selectedSegmentIndex)
+        mainModel.fetchGoogleNews(segmentController.selectedSegmentIndex)
     }
     
     private func setupBindings() {
         mainModel.didReceiveAnError = { [weak self] error in
             self?.alert(error)
         }
-        mainModel.didUpdateData = { [weak self] newsData in
-            self?.presentableData = newsData
+        mainModel.didUpdateGoogleData = { [weak self] googleNews in
+            self?.googleNews = googleNews?.articles
             DispatchQueue.main.async {
                 self?.tableView.reloadData()
                 self?.myRefreshControl.endRefreshing()
@@ -58,13 +53,14 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     // MARK: - Table view data source
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return presentableData?.count ?? 0
+        return googleNews?.count ?? 0
     }
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CustomTableViewCell
-        cell.setupCell(presentableData: presentableData, index: indexPath.row)
+        guard let newsGoogle = googleNews?[indexPath.row] else { return cell }
+        cell.setupCellForGoogle(googleNews: newsGoogle)
         return cell
     }
     
@@ -74,14 +70,14 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         guard let detailVC = segue.destination as? DetailViewController,
             let indexPath = tableView.indexPathForSelectedRow else { return }
         if segue.identifier == "load" {
-            guard let presentableData = presentableData else { return }
-            detailVC.detailModel = mainModel.detailModel(for: presentableData)
-            detailVC.newsData = presentableData[indexPath.row]
+            guard let googleNews = googleNews else { return }
+            detailVC.detailModel = mainModel.detailModelForGoogle(for: googleNews)
+            detailVC.googleNews = googleNews[indexPath.row]
         }
     }
     
     @IBAction func segmentControlAction(_ sender: UISegmentedControl) {
-        mainModel.fetchData(segmentController.selectedSegmentIndex)
+        mainModel.fetchGoogleNews(segmentController.selectedSegmentIndex)
     }
     
     private func alert(_ error: Error?) {

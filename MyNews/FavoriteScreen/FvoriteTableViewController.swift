@@ -30,8 +30,8 @@ class FavoriteTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CustomTableViewCell
-        let presentapleData = favoriteModel.getNews()
-        cell.setupCell(presentableData: presentapleData, index: indexPath.row)
+        guard let newsInfo = favoriteModel.getNews()?[indexPath.row] else { return cell }
+        cell.setupCellForGoogle(googleNews: newsInfo)
         return cell
     }
 
