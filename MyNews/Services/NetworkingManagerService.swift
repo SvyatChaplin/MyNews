@@ -9,51 +9,63 @@
 import Foundation
 import Alamofire
 
-enum NewsCategory {
-    case shared
-    case viewed
-    case mailed
+enum Category {
+    case none
+    case business
+    case technology
+    case sports
+    case entertainment
 }
 
 class NetworkingManagerService: NetworkingManager {
-    
+
+    private let googleApiKey: String = "&apiKey=279321c7e0e140a4ac169234e6b6d21a"
+    private let baseURL: String = "https://newsapi.org/v2/top-headlines?country=ua"
+
+
     func checkConnection() -> Bool {
         let connectionStatus = NetworkReachabilityManager(
             host: "https://www.google.com/")?.isReachable
         return connectionStatus!
     }
 
-    func fetchData(
-        category: NewsCategory,
-        completionHandler: @escaping (_ presentableData: [PresentableData]?, _ error: Error?) -> Void) {
-        let urlString: String?
+    func fetchGoogleNews(category: Category, completionHandler: @escaping (_ presentableData: GoogleNews?, _ error: Error?) -> Void) {
+
+        var categoryOfNews: String = ""
+
         switch category {
-        case .mailed:
-            urlString = "https://api.nytimes.com/svc/mostpopular/v2/emailed/30.json?api-key=p2tkAeA6jop4Fn9JwtABNyrxGf2MrWgI"
-        case .shared:
-            urlString = "https://api.nytimes.com/svc/mostpopular/v2/shared/30/facebook.json?api-key=p2tkAeA6jop4Fn9JwtABNyrxGf2MrWgI"
-        case .viewed:
-            urlString = "https://api.nytimes.com/svc/mostpopular/v2/viewed/30.json?api-key=p2tkAeA6jop4Fn9JwtABNyrxGf2MrWgI"
+        case .none:
+            categoryOfNews = ""
+        case .business:
+            categoryOfNews = "&category=business"
+        case .sports:
+            categoryOfNews = "&category=sports"
+        case .entertainment:
+            categoryOfNews = "&category=entertainment"
+        case .technology:
+            categoryOfNews = "&category=technology"
         }
-        guard let safeURL = urlString,
-            let url = URL(string: safeURL) else { return }
-        AF.request(url, method: .get).responseJSON { (response) in
-            DispatchQueue.main.async {
-                if response.data != nil {
-                    guard let data = response.data else { return }
-                    do {
-                        let myResponse = try JSONDecoder().decode(NewsData.self, from: data)
-                        let presentableData = myResponse.results.map(PresentableData.init)
-                        completionHandler(presentableData, nil)
-                    } catch {
-                        print(error.localizedDescription)
-                        completionHandler(nil, error)
+
+        let urlString = baseURL + categoryOfNews + googleApiKey
+        
+        guard let url = URL(string: urlString) else { return }
+        AF.request(url, method: .get)
+            .responseJSON { (response) in
+                DispatchQueue.main.async {
+                    if response.data != nil {
+                        guard let data = response.data else { return }
+                        do {
+                            let googleNews = try JSONDecoder().decode(GoogleNews.self, from: data)
+                            completionHandler(googleNews, nil)
+                        } catch {
+                            print(error)
+                            completionHandler(nil, error)
+                        }
+                    } else {
+                        print(response.error?.localizedDescription ?? "Something wrong")
+                        completionHandler(nil, response.error)
                     }
-                } else {
-                    print(response.error?.localizedDescription ?? "Something wrong")
-                    completionHandler(nil, response.error)
                 }
-            }
         }
     }
     
