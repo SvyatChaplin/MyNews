@@ -16,7 +16,7 @@ class FavoriteModel {
         self.storageManager = storageManager
     }
 
-    func getNews() -> [PresentableData]? {
+    func getNews() -> [Articles]? {
         return storageManager.getData()
     }
 

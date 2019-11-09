@@ -16,7 +16,7 @@ class DetailModel {
         self.storageManager = storageManager
     }
     
-    func saveNewsData(_ data: Results) {
+    func saveNewsData(_ data: Articles) {
         storageManager.saveNewsData(data)
     }
     

@@ -39,13 +39,14 @@ class StorageManagerService: StorageManager {
     
     // MARK: - Methods to manage data
     
-    func saveNewsData(_ data: Results) {
+    func saveNewsData(_ data: Articles) {
         let context = persistentContainer.viewContext
         guard let entity = NSEntityDescription.entity(forEntityName: "SavedNewsData", in: context) else { return }
         let managedObject = NSManagedObject(entity: entity, insertInto: context) as! SavedNewsData
-        managedObject.abstract = data.abstract
+        managedObject.abstract = data.description
         managedObject.title = data.title
         managedObject.url = data.url
+        managedObject.urlToImage = data.urlToImage
         
         do {
             try context.save()
@@ -54,12 +55,12 @@ class StorageManagerService: StorageManager {
         }
     }
     
-    func getData() -> [PresentableData]? {
+    func getData() -> [Articles]? {
         let context = persistentContainer.viewContext
         let fetchRequest: NSFetchRequest<SavedNewsData> = SavedNewsData.fetchRequest()
         do {
             let results = try context.fetch(fetchRequest)
-            return results.map(PresentableData.init)
+            return results.map(Articles.init)
         } catch {
             print(error.localizedDescription)
             return nil
@@ -78,4 +79,14 @@ class StorageManagerService: StorageManager {
         }
     }
     
+}
+
+extension Articles {
+
+    init(savedNewsData: SavedNewsData) {
+        self.description = savedNewsData.abstract
+        self.title = savedNewsData.title
+        self.url = savedNewsData.url
+        self.urlToImage = savedNewsData.urlToImage
+    }
 }

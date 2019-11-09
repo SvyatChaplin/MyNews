@@ -11,8 +11,6 @@ import Foundation
 protocol NetworkingManager {
 
     func checkConnection() -> Bool
-    func fetchData(
-    category: NewsCategory,
-    completionHandler: @escaping (_ presentableData: [PresentableData]?, _ error: Error?) -> Void)
+    func fetchGoogleNews(category: Category, completionHandler: @escaping (_ presentableData: GoogleNews?, _ error: Error?) -> Void)
 
 }

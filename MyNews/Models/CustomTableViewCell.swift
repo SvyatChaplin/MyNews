@@ -7,16 +7,31 @@
 //
 
 import UIKit
+import Kingfisher
 
 class CustomTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var viewForImage: UIView!
+    @IBOutlet weak var newsImageView: UIImageView!
     @IBOutlet weak var backView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var newsDetailsLabel: UILabel!
 
-    func setupCell(newsInfo: PresentableData) {
+    func setupCellForGoogle(googleNews: Articles) {
+        
         self.backView.layer.cornerRadius = 10
-        self.titleLabel.text = newsInfo.title
-        self.newsDetailsLabel.text = newsInfo.abstract
+        self.viewForImage.layer.cornerRadius = 10
+        self.viewForImage.clipsToBounds = true
+        self.backView.layer.masksToBounds = false
+        self.backView.layer.shadowColor = UIColor.black.cgColor
+        self.backView.layer.shadowOffset = .zero
+        self.backView.layer.shadowOpacity = 0.3
+        self.backView.layer.shadowRadius = 7
+        if let urlToImage = googleNews.urlToImage {
+            let url = URL(string: urlToImage)
+            self.newsImageView.kf.setImage(with: url)
+        }
+        self.titleLabel.text = googleNews.title
+        self.newsDetailsLabel.text = googleNews.description
     }
 }
