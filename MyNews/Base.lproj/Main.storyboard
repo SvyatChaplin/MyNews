@@ -167,7 +167,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qzM-QB-5ai">
-                                <rect key="frame" x="0.0" y="119" width="414" height="694"/>
+                                <rect key="frame" x="0.0" y="119" width="414" height="777"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="Cell" id="pTK-Eu-0ow" customClass="CustomTableViewCell" customModule="MyNews" customModuleProvider="target">
@@ -266,12 +266,12 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="qzM-QB-5ai" firstAttribute="leading" secondItem="A59-O5-PDW" secondAttribute="leading" id="BZC-Mi-fiW"/>
-                            <constraint firstItem="A59-O5-PDW" firstAttribute="bottom" secondItem="qzM-QB-5ai" secondAttribute="bottom" id="O1F-Fv-4Y4"/>
+                            <constraint firstAttribute="bottom" secondItem="qzM-QB-5ai" secondAttribute="bottom" id="O1F-Fv-4Y4"/>
                             <constraint firstItem="A59-O5-PDW" firstAttribute="trailing" secondItem="qzM-QB-5ai" secondAttribute="trailing" id="OtW-Qx-bNu"/>
                             <constraint firstItem="u75-xf-pfv" firstAttribute="leading" secondItem="A59-O5-PDW" secondAttribute="leading" id="XVw-H4-pGk"/>
-                            <constraint firstItem="qzM-QB-5ai" firstAttribute="top" secondItem="u75-xf-pfv" secondAttribute="bottom" id="nG9-gf-Afx"/>
                             <constraint firstItem="u75-xf-pfv" firstAttribute="top" secondItem="A59-O5-PDW" secondAttribute="top" id="npz-5K-Fwk"/>
                             <constraint firstItem="A59-O5-PDW" firstAttribute="trailing" secondItem="u75-xf-pfv" secondAttribute="trailing" id="qma-Qy-jJz"/>
+                            <constraint firstItem="qzM-QB-5ai" firstAttribute="top" secondItem="u75-xf-pfv" secondAttribute="bottom" id="xxp-8V-Rij"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="A59-O5-PDW"/>
                     </view>

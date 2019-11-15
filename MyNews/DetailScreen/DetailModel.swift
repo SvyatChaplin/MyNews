@@ -19,5 +19,9 @@ class DetailModel {
     func saveNewsData(_ data: Articles) {
         storageManager.saveNewsData(data)
     }
+
+    func getData() -> [Articles]? {
+        storageManager.getData()
+    }
     
 }
