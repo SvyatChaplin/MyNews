@@ -26,10 +26,6 @@ class DetailViewController: UIViewController, WKNavigationDelegate {
         setupBindings()
     }
 
-//    func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
-//        indicator.startAnimating()
-//    }
-
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         indicator.stopAnimating()
     }
@@ -41,16 +37,24 @@ class DetailViewController: UIViewController, WKNavigationDelegate {
             favoriteButton.isEnabled = false
             guard let urlString = startUrl,
                 let url = URL(string: urlString) else { return }
-            var urlRequest = URLRequest(url: url)
-            urlRequest.cachePolicy = .returnCacheDataElseLoad
-            webView.load(urlRequest)
+            setupWebView(url)
         } else {
             guard let urlString = googleNews?.url,
-                let url = URL(string: urlString) else { return }
-            var urlRequest = URLRequest(url: url)
-            urlRequest.cachePolicy = .returnCacheDataElseLoad
-            webView.load(urlRequest)
+                let url = URL(string: urlString),
+                let results = detailModel.getData() else { return }
+            for result in results {
+                if result.url == urlString {
+                    favoriteButton.isEnabled = false
+                }
+            }
+            setupWebView(url)
         }
+    }
+
+    private func setupWebView(_ url: URL) {
+        var urlRequest = URLRequest(url: url)
+        urlRequest.cachePolicy = .returnCacheDataElseLoad
+        webView.load(urlRequest)
     }
     
     @IBAction func addToFavoriteButton(_ sender: UIButton) {
