@@ -30,6 +30,8 @@ class CustomTableViewCell: UITableViewCell {
         if let urlToImage = googleNews.urlToImage {
             let url = URL(string: urlToImage)
             self.newsImageView.kf.setImage(with: url)
+        } else {
+            self.newsImageView.image = #imageLiteral(resourceName: "error_image")
         }
         self.titleLabel.text = googleNews.title
         self.newsDetailsLabel.text = googleNews.description
