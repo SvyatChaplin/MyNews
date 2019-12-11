@@ -59,8 +59,8 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CustomTableViewCell
-        guard let newsGoogle = googleNews?[indexPath.row] else { return cell }
-        cell.setupCellForGoogle(googleNews: newsGoogle)
+        guard let googleNews = googleNews?[indexPath.row] else { return cell }
+        cell.setupCellForGoogle(googleNews: googleNews)
         return cell
     }
     
