@@ -34,6 +34,7 @@ class MainModel {
         default:
             category = .business
         }
+
         if networkingManager.checkConnection() {
             networkingManager.fetchGoogleNews(category: category) { [weak self] (googleNews, error) in
                 guard let self = self else { return }
