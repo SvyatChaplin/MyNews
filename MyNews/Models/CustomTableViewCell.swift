@@ -31,7 +31,8 @@ class CustomTableViewCell: UITableViewCell {
             let url = URL(string: urlToImage)
             self.newsImageView.kf.setImage(with: url)
         } else {
-            self.newsImageView.image = #imageLiteral(resourceName: "error_image")
+            self.newsImageView.translatesAutoresizingMaskIntoConstraints = false
+            self.newsImageView.heightAnchor.constraint(equalToConstant: 0).isActive = true
         }
         self.titleLabel.text = googleNews.title
         self.newsDetailsLabel.text = googleNews.description
