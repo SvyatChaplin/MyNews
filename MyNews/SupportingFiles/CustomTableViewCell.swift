@@ -18,22 +18,22 @@ class CustomTableViewCell: UITableViewCell {
     @IBOutlet weak var newsDetailsLabel: UILabel!
 
     func setupCellForGoogle(googleNews: Articles) {
-        
-        self.backView.layer.cornerRadius = 10
+
         self.viewForImage.layer.cornerRadius = 10
         self.viewForImage.clipsToBounds = true
+        
+        self.backView.layer.cornerRadius = 10
         self.backView.layer.masksToBounds = false
         self.backView.layer.shadowColor = UIColor.black.cgColor
         self.backView.layer.shadowOffset = .zero
         self.backView.layer.shadowOpacity = 0.3
         self.backView.layer.shadowRadius = 7
+
         if let urlToImage = googleNews.urlToImage {
             let url = URL(string: urlToImage)
             self.newsImageView.kf.setImage(with: url)
-        } else {
-            self.newsImageView.translatesAutoresizingMaskIntoConstraints = false
-            self.newsImageView.heightAnchor.constraint(equalToConstant: 0).isActive = true
         }
+        
         self.titleLabel.text = googleNews.title
         self.newsDetailsLabel.text = googleNews.description
     }

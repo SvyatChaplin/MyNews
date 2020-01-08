@@ -16,13 +16,13 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     private var googleNews: [Articles]?
     private let myRefreshControl = UIRefreshControl()
     
-    var mainModel: MainModel!
+    var mainModel: MainModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupBindings()
         setupRefreshControl()
-        mainModel.fetchGoogleNews(segmentController.selectedSegmentIndex)
+        mainModel?.fetchGoogleNews(segmentController.selectedSegmentIndex)
     }
     
     // MARK: - Methods to refresh data
@@ -34,14 +34,14 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     @objc private func refresh(_ sender: Any) {
-        mainModel.fetchGoogleNews(segmentController.selectedSegmentIndex)
+        mainModel?.fetchGoogleNews(segmentController.selectedSegmentIndex)
     }
     
     private func setupBindings() {
-        mainModel.didReceiveAnError = { [weak self] error in
+        mainModel?.didReceiveAnError = { [weak self] error in
             self?.alert(error)
         }
-        mainModel.didUpdateGoogleData = { [weak self] googleNews in
+        mainModel?.didUpdateGoogleData = { [weak self] googleNews in
             self?.googleNews = googleNews?.articles
             DispatchQueue.main.async {
                 self?.tableView.reloadData()
@@ -65,19 +65,22 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     // MARK: - Navigation, IBActions and alerts
-    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let detailVC = segue.destination as? DetailViewController,
-            let indexPath = tableView.indexPathForSelectedRow else { return }
-        if segue.identifier == "load" {
-            guard let googleNews = googleNews else { return }
-            detailVC.detailModel = mainModel.detailModelForGoogle(for: googleNews)
-            detailVC.googleNews = googleNews[indexPath.row]
+        guard
+            let detailVC = segue.destination as? DetailViewController,
+            let indexPath = tableView.indexPathForSelectedRow,
+            segue.identifier == "load",
+            let googleNews = googleNews else {
+                return
         }
+        detailVC.detailModel = mainModel?.detailModelForGoogle(for: googleNews)
+        detailVC.googleNews = googleNews[indexPath.row]
+
     }
     
     @IBAction func segmentControlAction(_ sender: UISegmentedControl) {
-        mainModel.fetchGoogleNews(segmentController.selectedSegmentIndex)
+        mainModel?.fetchGoogleNews(segmentController.selectedSegmentIndex)
     }
     
     private func alert(_ error: Error?) {

@@ -17,6 +17,7 @@
 		ECD062DA236D6291004FC043 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD062D9236D6291004FC043 /* MainViewController.swift */; };
 		ECD062DE236D7A93004FC043 /* NetworkingManagerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD062DD236D7A93004FC043 /* NetworkingManagerService.swift */; };
 		ECD062E4236D9172004FC043 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD062E3236D9172004FC043 /* DetailViewController.swift */; };
+		ECD2D92523C5DB3D00835A5F /* FlowAssemblyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD2D92423C5DB3D00835A5F /* FlowAssemblyService.swift */; };
 		ECE4F4DA236DCDF0001FF3CB /* FvoriteTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECE4F4D9236DCDF0001FF3CB /* FvoriteTableViewController.swift */; };
 		ECE4F4DF236EC7F6001FF3CB /* MainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECE4F4DE236EC7F6001FF3CB /* MainModel.swift */; };
 		ECE4F4E1236EC845001FF3CB /* NetworkingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECE4F4E0236EC845001FF3CB /* NetworkingManager.swift */; };
@@ -43,6 +44,7 @@
 		ECD062D9236D6291004FC043 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		ECD062DD236D7A93004FC043 /* NetworkingManagerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingManagerService.swift; sourceTree = "<group>"; };
 		ECD062E3236D9172004FC043 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		ECD2D92423C5DB3D00835A5F /* FlowAssemblyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowAssemblyService.swift; sourceTree = "<group>"; };
 		ECE4F4D9236DCDF0001FF3CB /* FvoriteTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FvoriteTableViewController.swift; sourceTree = "<group>"; };
 		ECE4F4DE236EC7F6001FF3CB /* MainModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainModel.swift; sourceTree = "<group>"; };
 		ECE4F4E0236EC845001FF3CB /* NetworkingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingManager.swift; sourceTree = "<group>"; };
@@ -107,7 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				ECD062C0236D5DA0004FC043 /* AppDelegate.swift */,
-				ECE4F4F223716E8B001FF3CB /* Models */,
+				ECE4F4F223716E8B001FF3CB /* SupportingFiles */,
 				ECE4F4E6236F35D1001FF3CB /* DetailScreen */,
 				ECE4F4D8236DCD9D001FF3CB /* FavoriteScreen */,
 				ECD062E1236D7B57004FC043 /* MainScreen */,
@@ -133,6 +135,7 @@
 		ECD062E2236D7B86004FC043 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				ECD2D92423C5DB3D00835A5F /* FlowAssemblyService.swift */,
 				ECD062DD236D7A93004FC043 /* NetworkingManagerService.swift */,
 				ECE4F4E0236EC845001FF3CB /* NetworkingManager.swift */,
 				ECE4F4E2236EE555001FF3CB /* StorageManagerService.swift */,
@@ -153,19 +156,19 @@
 		ECE4F4E6236F35D1001FF3CB /* DetailScreen */ = {
 			isa = PBXGroup;
 			children = (
-				ECD062E3236D9172004FC043 /* DetailViewController.swift */,
 				ECE4F4E9236F66ED001FF3CB /* DetailModel.swift */,
+				ECD062E3236D9172004FC043 /* DetailViewController.swift */,
 			);
 			path = DetailScreen;
 			sourceTree = "<group>";
 		};
-		ECE4F4F223716E8B001FF3CB /* Models */ = {
+		ECE4F4F223716E8B001FF3CB /* SupportingFiles */ = {
 			isa = PBXGroup;
 			children = (
 				ECD062D7236D6226004FC043 /* CustomTableViewCell.swift */,
 				ECE55E9F23740BE400758544 /* GoogleNews.swift */,
 			);
-			path = Models;
+			path = SupportingFiles;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -285,6 +288,7 @@
 			files = (
 				ECD062E4236D9172004FC043 /* DetailViewController.swift in Sources */,
 				ECD062D8236D6226004FC043 /* CustomTableViewCell.swift in Sources */,
+				ECD2D92523C5DB3D00835A5F /* FlowAssemblyService.swift in Sources */,
 				ECE4F4EA236F66ED001FF3CB /* DetailModel.swift in Sources */,
 				ECD062C1236D5DA0004FC043 /* AppDelegate.swift in Sources */,
 				ECD062CB236D5DA0004FC043 /* MyNews.xcdatamodeld in Sources */,
