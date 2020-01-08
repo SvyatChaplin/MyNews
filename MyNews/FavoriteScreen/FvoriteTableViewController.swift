@@ -10,7 +10,7 @@ import UIKit
 
 class FavoriteTableViewController: UITableViewController {
 
-    var favoriteModel: FavoriteModel!
+    var favoriteModel: FavoriteModel?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,13 +24,12 @@ class FavoriteTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return favoriteModel.getNews()?.count ?? 0
+        return favoriteModel?.getNews()?.count ?? 0
     }
-
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CustomTableViewCell
-        guard let newsInfo = favoriteModel.getNews()?[indexPath.row] else { return cell }
+        guard let newsInfo = favoriteModel?.getNews()?[indexPath.row] else { return cell }
         cell.setupCellForGoogle(googleNews: newsInfo)
         return cell
     }
@@ -39,7 +38,7 @@ class FavoriteTableViewController: UITableViewController {
                             commit editingStyle: UITableViewCell.EditingStyle,
                             forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            favoriteModel.removeElement(at: indexPath.row)
+            favoriteModel?.removeElement(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .automatic)
         }
     }
@@ -48,7 +47,7 @@ class FavoriteTableViewController: UITableViewController {
         guard let detailVC = segue.destination as? DetailViewController,
             let indexPath = tableView.indexPathForSelectedRow else { return }
         if segue.identifier == "saved" {
-            detailVC.startUrl = favoriteModel.getNews()?[indexPath.row].url
+            detailVC.startUrl = favoriteModel?.getNews()?[indexPath.row].url
         }
     }
 
