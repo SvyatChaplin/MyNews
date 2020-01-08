@@ -9,7 +9,6 @@
 import UIKit
 import CoreData
 
-//@available(iOS 13.0, *)
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
@@ -19,27 +18,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         self.window = UIWindow(frame: UIScreen.main.bounds)
-        
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        guard let mainScreenViewController = storyboard.instantiateViewController(withIdentifier: "MainScreenVC") as? MainViewController,
-            let favoriteViewController = storyboard.instantiateViewController(withIdentifier: "FavoriteScreenVC") as? FavoriteTableViewController,
-            let tabBarController = storyboard.instantiateViewController(withIdentifier: "TabBarController") as? UITabBarController,
-            let mainNavigationController = storyboard.instantiateViewController(withIdentifier: "MainNC") as? UINavigationController,
-            let favoriteNavigationController = storyboard.instantiateViewController(withIdentifier: "FavoriteNC") as? UINavigationController else {
-                return true
-        }
-        let networkingManager = NetworkingManagerService()
-        let storageManager = StorageManagerService()
-        let mainModel = MainModel(storageManager: storageManager, networkingManager: networkingManager)
-        mainScreenViewController.mainModel = mainModel
-        let favoriteModel = FavoriteModel(storageManager: storageManager)
-        favoriteViewController.favoriteModel = favoriteModel
-        mainNavigationController.viewControllers = [mainScreenViewController]
-        favoriteNavigationController.viewControllers = [favoriteViewController]
-         tabBarController.viewControllers = [mainNavigationController, favoriteNavigationController]
-        self.window?.rootViewController = tabBarController
-        self.window?.makeKeyAndVisible()
-        
+
+        FlowAssemblyService.setupFlow(window)
+
         return true
     }
     

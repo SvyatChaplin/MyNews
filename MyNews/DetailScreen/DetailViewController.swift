@@ -18,48 +18,45 @@ class DetailViewController: UIViewController, WKNavigationDelegate {
     var startUrl: String?
     var googleNews: Articles?
 
-    var detailModel: DetailModel!
+    var detailModel: DetailModel?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         indicator.startAnimating()
-        setupBindings()
+        webView.navigationDelegate = self
+        initialSetup()
+    }
+
+    private func initialSetup() {
+        favoriteButton.layer.cornerRadius = 10
+        if googleNews == nil {
+            favoriteButton.isEnabled = false
+            setupWebView(startUrl)
+        } else {
+            guard let results = detailModel?.getData() else { return }
+            for result in results {
+                if result.url == googleNews?.url {
+                    favoriteButton.isEnabled = false
+                }
+            }
+            setupWebView(googleNews?.url)
+        }
+    }
+
+    private func setupWebView(_ urlString: String?) {
+        guard let urlString = urlString, let url = URL(string: urlString) else { return }
+        var urlRequest = URLRequest(url: url)
+        urlRequest.cachePolicy = .returnCacheDataElseLoad
+        webView.load(urlRequest)
     }
 
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         indicator.stopAnimating()
     }
-
-    private func setupBindings() {
-        webView.navigationDelegate = self
-        favoriteButton.layer.cornerRadius = 10
-        if googleNews == nil {
-            favoriteButton.isEnabled = false
-            guard let urlString = startUrl,
-                let url = URL(string: urlString) else { return }
-            setupWebView(url)
-        } else {
-            guard let urlString = googleNews?.url,
-                let url = URL(string: urlString),
-                let results = detailModel.getData() else { return }
-            for result in results {
-                if result.url == urlString {
-                    favoriteButton.isEnabled = false
-                }
-            }
-            setupWebView(url)
-        }
-    }
-
-    private func setupWebView(_ url: URL) {
-        var urlRequest = URLRequest(url: url)
-        urlRequest.cachePolicy = .returnCacheDataElseLoad
-        webView.load(urlRequest)
-    }
     
     @IBAction func addToFavoriteButton(_ sender: UIButton) {
         guard let data = googleNews else { return }
         favoriteButton.isEnabled = false
-        detailModel.saveNewsData(data)
+        detailModel?.saveNewsData(data)
     }
 }

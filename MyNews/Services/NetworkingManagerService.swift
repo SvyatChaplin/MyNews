@@ -20,7 +20,7 @@ enum Category {
 class NetworkingManagerService: NetworkingManager {
 
     private let googleApiKey: String = "&apiKey=279321c7e0e140a4ac169234e6b6d21a"
-    private let baseURL: String = "https://newsapi.org/v2/top-headlines?country=ua"
+    private let baseURL: String = "https://newsapi.org/v2/top-headlines?country=us"
 
     func checkConnection() -> Bool {
         let connectionStatus = NetworkReachabilityManager(

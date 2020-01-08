@@ -24,6 +24,7 @@ class MainModel {
 
     func fetchGoogleNews(_ segmentIndex: Int) {
         var category: Category = .none
+        
         switch segmentIndex {
         case 0:
             category = .none
