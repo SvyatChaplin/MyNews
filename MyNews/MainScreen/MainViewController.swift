@@ -65,15 +65,18 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     // MARK: - Navigation, IBActions and alerts
-    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let detailVC = segue.destination as? DetailViewController,
-            let indexPath = tableView.indexPathForSelectedRow else { return }
-        if segue.identifier == "load" {
-            guard let googleNews = googleNews else { return }
-            detailVC.detailModel = mainModel?.detailModelForGoogle(for: googleNews)
-            detailVC.googleNews = googleNews[indexPath.row]
+        guard
+            let detailVC = segue.destination as? DetailViewController,
+            let indexPath = tableView.indexPathForSelectedRow,
+            segue.identifier == "load",
+            let googleNews = googleNews else {
+                return
         }
+        detailVC.detailModel = mainModel?.detailModelForGoogle(for: googleNews)
+        detailVC.googleNews = googleNews[indexPath.row]
+
     }
     
     @IBAction func segmentControlAction(_ sender: UISegmentedControl) {
